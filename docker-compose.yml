@@ -1,0 +1,29 @@
+services:
+  backend:
+    build:
+      context: ./backend
+    container_name: ai-interviewer-backend
+    env_file:
+      - ./backend/.env
+    environment:
+      CHROMA_PATH: /app/chroma_db
+      UPLOAD_DIR: /app/uploads
+      KNOWLEDGE_BASE_DIR: /app/knowledge_base
+      CORS_ORIGINS: http://localhost:3000,http://127.0.0.1:3000
+    ports:
+      - "8000:8000"
+    volumes:
+      - ./backend/chroma_db:/app/chroma_db
+      - ./backend/uploads:/app/uploads
+      - ./backend/knowledge_base:/app/knowledge_base
+
+  frontend:
+    build:
+      context: ./frontend
+    container_name: ai-interviewer-frontend
+    depends_on:
+      - backend
+    environment:
+      NEXT_PUBLIC_API_BASE_URL: http://localhost:8000/api
+    ports:
+      - "3000:3000"
