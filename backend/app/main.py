@@ -5,15 +5,15 @@ from app.core.config import CORS_ORIGINS
 
 # Route Imports
 from app.api.routes.upload import (
-    router as upload_router
+    router as upload_router,
 )
 
 from app.api.routes.interview import (
-    router as interview_router
+    router as interview_router,
 )
 
 from app.api.routes.evaluation import (
-    router as evaluation_router
+    router as evaluation_router,
 )
 
 # FastAPI App
@@ -23,13 +23,26 @@ app = FastAPI(
         "AI-Powered Candidate Screening "
         "and Technical Interview Platform"
     ),
-    version="1.0.0"
+    version="1.0.0",
 )
 
-# CORS Configuration
+# Production + Local CORS
+origins = [
+    "http://localhost:3000",
+    "https://ai-interviewer-platform-delta.vercel.app",
+]
+
+# Add custom origins from config if available
+if CORS_ORIGINS:
+    origins.extend(CORS_ORIGINS)
+
+# Remove duplicates
+origins = list(set(origins))
+
+# CORS Middleware
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=CORS_ORIGINS,
+    allow_origins=origins,
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],
@@ -38,31 +51,35 @@ app.add_middleware(
 # Register API Routes
 app.include_router(
     upload_router,
-    tags=["Resume Upload"]
+    prefix="/api",
+    tags=["Resume Upload"],
 )
 
 app.include_router(
     interview_router,
-    tags=["Interview Generation"]
+    prefix="/api",
+    tags=["Interview Generation"],
 )
 
 app.include_router(
     evaluation_router,
-    tags=["Answer Evaluation"]
+    prefix="/api",
+    tags=["Answer Evaluation"],
 )
 
-# Root Health Check
+# Root Endpoint
 @app.get("/", tags=["Health"])
 def root():
     return {
         "message": "Backend Running",
         "status": "success",
-        "service": "AI Interviewer API"
+        "service": "AI Interviewer API",
     }
 
-# Health Endpoint
+# Health Check Endpoint
 @app.get("/health", tags=["Health"])
 def health_check():
     return {
-        "healthy": True
+        "healthy": True,
+        "service": "AI Interviewer API",
     }
