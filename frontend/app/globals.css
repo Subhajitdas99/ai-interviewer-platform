@@ -1,0 +1,124 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* =========================
+   ROOT THEME
+========================= */
+
+:root {
+  --background: #000000;
+  --foreground: #ffffff;
+}
+
+/* =========================
+   GLOBAL RESET
+========================= */
+
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* =========================
+   HTML + BODY
+========================= */
+
+html,
+body {
+  width: 100%;
+  min-height: 100%;
+  overflow-x: hidden;
+  scroll-behavior: smooth;
+
+  background: var(--background);
+  color: var(--foreground);
+
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+/* =========================
+   BODY
+========================= */
+
+body {
+  position: relative;
+  isolation: isolate;
+}
+
+/* =========================
+   NEXT ROOT
+========================= */
+
+#__next {
+  position: relative;
+  isolation: isolate;
+}
+
+/* =========================
+   BUTTONS
+========================= */
+
+button {
+  cursor: pointer;
+  border: none;
+  outline: none;
+
+  position: relative;
+  z-index: 50;
+
+  pointer-events: auto;
+}
+
+/* =========================
+   LINKS
+========================= */
+
+a {
+  text-decoration: none;
+  cursor: pointer;
+
+  position: relative;
+  z-index: 50;
+
+  pointer-events: auto;
+}
+
+/* =========================
+   FORMS
+========================= */
+
+input,
+textarea,
+select {
+  outline: none;
+  pointer-events: auto;
+}
+
+/* =========================
+   IMAGES
+========================= */
+
+img {
+  max-width: 100%;
+  display: block;
+}
+
+/* =========================
+   CLICK SAFETY
+========================= */
+
+main,
+section,
+div {
+  position: relative;
+}
+
+/* Prevent invisible overlays */
+body * {
+  pointer-events: auto;
+}
+
