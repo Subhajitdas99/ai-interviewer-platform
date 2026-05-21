@@ -38,3 +38,8 @@ CORS_ORIGINS = [
     ).split(",")
     if origin.strip()
 ]
+
+CORS_ORIGIN_REGEX = os.getenv(
+    "CORS_ORIGIN_REGEX",
+    r"^https://ai-interviewer-platform(?:-[a-z0-9]+)*\.vercel\.app$",
+)
