@@ -2,7 +2,10 @@ import axios from "axios";
 
 const api = axios.create({
   baseURL:
-    process.env.NEXT_PUBLIC_API_URL ||
+    process.env
+      .NEXT_PUBLIC_API_BASE_URL ||
+    process.env
+      .NEXT_PUBLIC_API_URL ||
     "https://ai-interviewer-backend-hdox.onrender.com/api",
 });
 

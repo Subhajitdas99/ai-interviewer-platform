@@ -51,19 +51,16 @@ app.add_middleware(
 # Register API Routes
 app.include_router(
     upload_router,
-    prefix="/api",
     tags=["Resume Upload"],
 )
 
 app.include_router(
     interview_router,
-    prefix="/api",
     tags=["Interview Generation"],
 )
 
 app.include_router(
     evaluation_router,
-    prefix="/api",
     tags=["Answer Evaluation"],
 )
 
