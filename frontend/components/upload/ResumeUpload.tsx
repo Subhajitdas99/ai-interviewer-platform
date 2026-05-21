@@ -464,10 +464,12 @@ export default function ResumeUpload() {
               AI-Powered Technical Interview Platform
             </div>
 
-            <div className="space-y-4">
-              <h1 className="max-w-4xl text-4xl font-bold leading-tight text-white md:text-6xl">
-                Resume Intelligence
-                <span className="block text-zinc-500">
+            <div className="space-y-5">
+              <h1 className="max-w-4xl text-4xl font-bold leading-[0.95] text-white md:text-6xl">
+                <span className="block">
+                  Resume Intelligence
+                </span>
+                <span className="mt-2 block text-zinc-500 md:mt-3">
                   + Dynamic AI Interviews
                 </span>
               </h1>
@@ -479,7 +481,7 @@ export default function ResumeUpload() {
               </p>
             </div>
 
-            <div className="grid gap-4 sm:grid-cols-2 xl:grid-cols-3">
+            <div className="grid gap-4 md:grid-cols-3">
               <div className="rounded-3xl border border-zinc-800 bg-zinc-900/75 p-5">
                 <FileText className="mb-4 text-white" size={24} />
                 <p className="mb-2 text-lg font-semibold text-white">
@@ -528,17 +530,17 @@ export default function ResumeUpload() {
               </div>
             </div>
 
-            <div className="mb-6 flex flex-wrap gap-2 text-xs uppercase tracking-[0.18em] text-zinc-500">
-              <span className="rounded-full border border-zinc-800 px-3 py-2">
+            <ol className="mb-6 grid gap-2 text-xs uppercase tracking-[0.18em] text-zinc-500 sm:grid-cols-3">
+              <li className="rounded-full border border-zinc-800 px-3 py-2 text-center">
                 1. Select role
-              </span>
-              <span className="rounded-full border border-zinc-800 px-3 py-2">
+              </li>
+              <li className="rounded-full border border-zinc-800 px-3 py-2 text-center">
                 2. Upload PDF
-              </span>
-              <span className="rounded-full border border-zinc-800 px-3 py-2">
+              </li>
+              <li className="rounded-full border border-zinc-800 px-3 py-2 text-center">
                 3. Generate interview
-              </span>
-            </div>
+              </li>
+            </ol>
 
             <div className="space-y-5">
               <div className="space-y-2">
@@ -588,13 +590,13 @@ export default function ResumeUpload() {
                     className="w-full text-sm text-zinc-300 file:mr-4 file:rounded-xl file:border-0 file:bg-white file:px-4 file:py-3 file:font-semibold file:text-black hover:file:opacity-90"
                   />
 
-                  <p className="mt-3 text-sm text-zinc-500">
+                  <p className="mt-4 text-sm leading-6 text-zinc-500">
                     Best for resumes with clear project descriptions and skill sections.
                   </p>
                 </div>
 
                 {file && (
-                  <div className="rounded-2xl border border-zinc-800 bg-zinc-900/80 px-4 py-3 text-sm text-zinc-300">
+                  <div className="rounded-2xl border border-zinc-800 bg-zinc-900/80 px-4 py-3 text-sm leading-6 text-zinc-300">
                     Selected file:{" "}
                     <span className="font-medium text-white">
                       {file.name}
@@ -649,21 +651,21 @@ export default function ResumeUpload() {
                 Detected Skills
               </p>
 
-              <div className="flex flex-wrap gap-3">
+              <ul className="flex flex-wrap gap-3">
                 {result.parsed_data.skills.map(
                   (
                     skill,
                     index
                   ) => (
-                    <span
+                    <li
                       key={index}
                       className="rounded-full border border-zinc-700 bg-white px-4 py-2 text-sm font-medium text-black"
                     >
                       {skill}
-                    </span>
+                    </li>
                   )
                 )}
-              </div>
+              </ul>
             </div>
 
             <div className="rounded-[1.5rem] border border-zinc-800 bg-black/40 p-6">
@@ -776,7 +778,7 @@ export default function ResumeUpload() {
                                 })
                               )
                             }
-                            className="min-h-[180px] w-full rounded-[1.5rem] border border-zinc-800 bg-black/70 p-5 text-white transition placeholder:text-zinc-500 focus:border-zinc-600"
+                            className="min-h-[180px] w-full rounded-[1.5rem] border border-zinc-800 bg-black/70 p-5 leading-7 text-white transition placeholder:text-zinc-500 focus:border-zinc-600"
                           />
 
                           <button
